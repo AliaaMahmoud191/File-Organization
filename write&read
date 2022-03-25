@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;// Containe StreamWriter & StreamReader 
+               //Classes to take object to read and write from file
+namespace Lab2
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StreamWriter writetext = new StreamWriter("E:\\file1.txt");
+            //by default stream writer create new file  in D:\\
+            // خد الحاجة الي عايزه اكتبها من textbox مثلا
+            writetext.WriteLine("hello");
+            writetext.WriteLine("world");
+            writetext.GetType();
+            writetext.Close();//replace fixed copy with current copy
+            MessageBox.Show("Done","note",MessageBoxButtons.OK);
+                
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            StreamReader readtext = new StreamReader("E:\\file1.txt");
+            string mytext = readtext.ReadLine();
+            MessageBox.Show(mytext, "note", MessageBoxButtons.OK);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            StreamReader readtext = new StreamReader("E:\\file1.txt");
+            string mytext = readtext.ReadToEnd();
+            MessageBox.Show(mytext, "note", MessageBoxButtons.OK);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
+}
